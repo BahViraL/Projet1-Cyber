@@ -86,8 +86,7 @@ sache distinguer le réseau à protéger du reste du trafic.
 
 ## 4. syslog-ng — collecte et transfert vers Elasticsearch
 
-La configuration complète est dans syslog-ng/snort.conf (mot de passe
-retiré). Elle comprend trois blocs :
+La configuration complète est dans syslog-ng/snort.conf. Elle comprend trois blocs :
 
 - source : lit en continu le fichier d'alertes de Snort
   (/var/log/snort/snort.alert.fast)
