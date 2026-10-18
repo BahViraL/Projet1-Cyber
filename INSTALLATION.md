@@ -22,10 +22,6 @@ La VM défenseur a deux cartes réseau :
 - Nom de machine : defenseur
 - OpenSSH server installé dès l'installation du système
 
-Remarque : une première tentative avec Ubuntu 25.04 a été abandonnée, cette
-version n'étant plus maintenue par Ubuntu après janvier 2026. Les dépôts
-associés ne répondent plus, ce qui aurait bloqué l'installation des outils
-du projet. Une version LTS (support long terme) a été choisie à la place.
 
 ## 3. Mémoire et swap
 
