@@ -68,9 +68,7 @@ sa compatibilité avec la documentation disponible) :
     echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
     sudo apt update
 
-Installation d'Elasticsearch (le mot de passe du compte elastic généré à
-l'installation doit être conservé, il est demandé pour toute connexion à
-Kibana ou à l'API) :
+Installation d'Elasticsearch :
 
     sudo apt install -y elasticsearch
 
