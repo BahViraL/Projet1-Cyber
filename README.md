@@ -5,14 +5,31 @@ détection d'intrusion et de visualisation des alertes, construite sur une
 VM Ubuntu Server dédiée.
 
 ## Architecture
+```mermaid
+flowchart LR
+    subgraph Attaquant
+        A[Machine Kali Linux]
+    end
+    subgraph Cible
+        B[Serveur Web vulnérable - DVWA]
+    end
+    subgraph VM Defense
+        C[Snort IDS]
+        D[syslog-ng]
+        E[(Elasticsearch)]
+        F[Kibana]
+    end
+    subgraph Notifications
+        G[Canal Slack]
+    end
 
-    Kali (attaquant) --> réseau privé --> VM défenseur
-                                            |-- Snort (détection réseau)
-                                            |-- syslog-ng (collecte et parsing)
-                                            |-- Elasticsearch (stockage/index)
-                                            |-- Kibana (visualisation)
-                                            `-- DVWA (application cible vulnérable)
-
+    A -- "Attaques (Nmap, SQLi, SSH...)" --> B
+    B -. "Copie du Trafic Reseau" .-> C
+    C -- "Generation alertes" --> D
+    D -- "Logs parses JSON" --> E
+    E -- "Tableaux de bord" --> F
+    C -- "Script Python" --> G
+```
 ## Scénarios d'intrusion couverts
 
 1. Reconnaissance — scan de ports (nmap)
