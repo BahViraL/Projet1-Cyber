@@ -28,7 +28,7 @@ flowchart LR
     C -- "Generation alertes" --> D
     D -- "Logs parses JSON" --> E
     E -- "Tableaux de bord" --> F
-    C -- "Script Python" --> G
+    D -- "Script Python" --> G
 ```
 ## Scénarios d'intrusion couverts
 
