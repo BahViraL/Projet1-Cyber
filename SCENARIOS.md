@@ -50,7 +50,7 @@ Exfiltration de données sensibles (vol de mots de passe, données clients), mod
 
 ### Règle Snort implémentée
 ```text
-alert tcp any any -> $HOME_NET 80 (msg:"LAB Injection SQL detectee"; content:"GET "; depth:4; content:"id="; distance:0; content:"%27"; within:40; nocase; classtype\:web-application-attack; priority:1; sid:1000004; rev:2;)
+alert tcp any any -> $HOME_NET 80 (msg:"LAB Injection SQL detectee"; content:"GET "; depth:4; content:"id="; distance:0; content:"%27"; distance:0; within:40; nocase; classtype\:web-application-attack; priority:1; sid:1000004; rev:2;)
 ```
 
 ### Exemple de log (Alerte Snort)
