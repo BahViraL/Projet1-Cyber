@@ -16,11 +16,9 @@ alert tcp any any -> $HOME_NET 22 (msg:"LAB SSH brute force detecte"; flags:S; d
 alert tcp any any -> $HOME_NET 80 (msg:"LAB Injection SQL detectee"; content:"GET "; depth:4; content:"id="; distance:0; content:"%27"; distance:0; within:40; nocase; classtype:web-application-attack; priority:1; sid:1000004; rev:2;)
 
 # Scenario 4 : Traversee de repertoire - Priorite 2 (Divulgation de fichiers locaux)
-alert tcp any any -> $HOME_NET 80 (msg:"LAB Traversee de repertoire etc-passwd detectee"; content:"GET "; depth:4; content:"etc"; distance:0; nocase; content:"passwd"; distance:0; nocase; classtype:web-application-attack; priority:2; >
+alert tcp any any -> $HOME_NET 80 (msg:"LAB Traversee de repertoire etc-passwd detectee"; content:"GET "; depth:4; content:"etc"; distance:0; nocase; content:"passwd"; distance:0; nocase; classtype:web-application-attack; priority:2; sid:1000005; rev:2;)
 
 # Scenario 5 : Execution de commande a distance - Priorite 1 (Critique : prise de controle serveur)
-alert tcp any any -> $HOME_NET 80 (msg:"LAB Execution de commande a distance detectee"; content:"POST "; depth:5; content:"ip="; distance:0; content:"%3"; distance:0; within:40; classtype:web-application-attack; priority:1; sid:100000>
-
-
+alert tcp any any -> $HOME_NET 80 (msg:"LAB Execution de commande a distance detectee"; content:"POST "; depth:5; content:"ip="; distance:0; content:"%3"; distance:0; within:40; classtype:web-application-attack; priority:1; sid:1000006; rev:2;)
 
 
