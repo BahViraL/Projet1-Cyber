@@ -30,7 +30,7 @@ EXPLICATIONS_ADMIN = {
 }
 
 def envoyer_slack(message_texte):
-    if not SLACK_WEBHOOK_URL in SLACK_WEBHOOK_URL:
+    if not SLACK_WEBHOOK_URL or SLACK_WEBHOOK_URL == "URL":
         return
     payload = json.dumps({"text": message_texte}).encode("utf-8")
     req = urllib.request.Request(
