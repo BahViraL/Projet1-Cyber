@@ -79,4 +79,5 @@ Voir `elasticsearch/setup.md` pour le détail des requêtes. Résumé :
 
 ## 6. Kibana — vue de données
 
-Une vue de données a été créée avec le motif d'index `snort-*` et le champ d'horodatage `@timestamp`, permettant d'explorer les alertes dans *Discover* et de construire des visualisations dans *Lens*[cite: 7].
+Une vue de données a été créée avec le motif d'index `snort-*` et le champ d'horodatage `@timestamp`, permettant d'explorer les alertes dans *Discover* et de construire des visualisations dans *Lens*.
+
