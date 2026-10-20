@@ -105,3 +105,11 @@ Le tableau de bord personnalisé est divisé en quatre panneaux complémentaires
      - **Priorité 3 (Faible — 40 %) :** Reconnaissance réseau (`Scan de ports TCP SYN` et `ICMP echo request`).
 4. **Volume d'alertes par type (histogramme en bas à droite) :**
    - Compare la fréquence de déclenchement de chaque règle afin de repérer les attaques les plus insistantes et de vérifier l'efficacité des filtres de seuils (`threshold.conf`).
+
+
+## 5. Notifications en temps réel sur Slack
+
+Lorsqu'une alerte de **Priorité 1** (compromission critique : Injection SQL ou RCE) est détectée par Snort, `syslog-ng` filtre l'événement (`f_snort_critique`) et le transmet au script Python `point_bonus/alertes_slack.py`. Ce dernier envoie instantanément une notification formatée dans le canal Slack du SOC avec l'explication de la menace et les mesures de remédiation pour l'administrateur :
+
+![Alerte Slack reçue par l'administrateur](screenshots/Slack-alerte.png)
+
