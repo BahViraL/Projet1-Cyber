@@ -61,21 +61,21 @@ Cette valeur est reprise par le service via l'option `-S` passée au démarrage 
 
 La configuration complète est dans `syslog-ng/snort.conf`[cite: 7]. Elle comprend trois blocs :
 
-- **source** : lit en continu le fichier d'alertes de Snort (`/var/log/snort/snort.alert.fast`)[cite: 7].
-- **parser** : découpe chaque ligne d'alerte en champs nommés (`snort.sid`, `snort.msg`, `snort.priority`, `snort.src_ip`, `snort.dst_ip`, etc.) à l'aide d'une expression régulière avec groupes nommés[cite: 7].
-- **destination** : envoie chaque alerte, au format JSON, vers Elasticsearch en HTTPS, authentifié avec un compte dédié (voir `elasticsearch/setup.md`)[cite: 7].
+- **source** : lit en continu le fichier d'alertes de Snort (`/var/log/snort/snort.alert.fast`).
+- **parser** : découpe chaque ligne d'alerte en champs nommés (`snort.sid`, `snort.msg`, `snort.priority`, `snort.src_ip`, `snort.dst_ip`, etc.) à l'aide d'une expression régulière avec groupes nommés.
+- **destination** : envoie chaque alerte, au format JSON, vers Elasticsearch en HTTPS, authentifié avec un compte dédié (voir `elasticsearch/setup.md`).
 
-Point de vigilance rencontré : la première version du template ne créait pas de champ `@timestamp` (elle essayait de copier un champ du même nom qui n'existait pas). Sans horodatage, Kibana n'affichait aucun document. La correction consiste à construire ce champ explicitement à partir de la date de réception par syslog-ng[cite: 7] :
+Point de vigilance rencontré : la première version du template ne créait pas de champ `@timestamp` (elle essayait de copier un champ du même nom qui n'existait pas). Sans horodatage, Kibana n'affichait aucun document. La correction consiste à construire ce champ explicitement à partir de la date de réception par syslog-ng :
 
     --pair @timestamp=${ISODATE}
 
 ## 5. Elasticsearch — sécurité et modèle d'index
 
-Voir `elasticsearch/setup.md` pour le détail des requêtes. Résumé[cite: 7] :
+Voir `elasticsearch/setup.md` pour le détail des requêtes. Résumé :
 
-- Un rôle dédié (`syslogng_writer`) limite les droits au strict nécessaire : créer et écrire dans les index `snort-*`, rien de plus[cite: 7].
-- Un compte dédié (`syslogng`) porte ce rôle, plutôt que d'utiliser le compte administrateur `elastic` dans la configuration de `syslog-ng`[cite: 7].
-- Un modèle d'index (`snort`) type correctement les champs IP, les ports et la priorité en entiers, ce qui permet les filtres et les agrégations dans Kibana[cite: 7].
+- Un rôle dédié (`syslogng_writer`) limite les droits au strict nécessaire : créer et écrire dans les index `snort-*`, rien de plus.
+- Un compte dédié (`syslogng`) porte ce rôle, plutôt que d'utiliser le compte administrateur `elastic` dans la configuration de `syslog-ng`.
+- Un modèle d'index (`snort`) type correctement les champs IP, les ports et la priorité en entiers, ce qui permet les filtres et les agrégations dans Kibana.
 
 ## 6. Kibana — vue de données
 
