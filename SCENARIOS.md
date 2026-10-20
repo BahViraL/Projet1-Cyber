@@ -86,7 +86,7 @@ Compromission totale du système. L'attaquant peut déployer un reverse shell, i
 
 ### Règle Snort implémentée
 ```text
-alert tcp any any -> $HOME_NET 80 (msg:"LAB Execution de commande a distance detectee"; content:"POST "; depth:5; content:"ip="; distance:0; content:"%3"; within:40; classtype\:web-application-attack; priority:1; sid:1000006; rev:2;)
+alert tcp any any -> $HOME_NET 80 (msg:"LAB Execution de commande a distance detectee"; content:"POST "; depth:5; content:"ip="; content:"%3"; within:40; classtype\:web-application-attack; priority:1; sid:1000006; rev:2;)
 ```
 
 ### Exemple de log (Alerte Snort)
