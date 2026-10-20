@@ -18,7 +18,7 @@ alert tcp any any -> $HOME_NET any (msg:"LAB Scan de ports TCP SYN detecte"; fla
 ```
 
 ### Exemple de log (Alerte Snort)
-`[**] [1:1000002:2] LAB Scan de ports TCP SYN detecte [**] [Classification: Attempted Information Leak] [Priority: 3] {TCP} 192.168.56.101:45322 -> 192.168.56.10:80`
+`[**] [1:1000002:2] LAB Scan de ports TCP SYN detecte [**] [Classification: Attempted Information Leak] [Priority: 3] {TCP} 192.168.56.1:45322 -> 192.168.56.102:80`
 
 ---
 
@@ -36,7 +36,7 @@ alert tcp any any -> $HOME_NET 22 (msg:"LAB SSH brute force detecte"; flags\:S; 
 ```
 
 ### Exemple de log (Alerte Snort)
-`[**] [1:1000003:2] LAB SSH brute force detecte [**] [Classification: Attempted Administrator Privilege Gain] [Priority: 2] {TCP} 192.168.56.101:51204 -> 192.168.56.10:22`
+`[**] [1:1000003:2] LAB SSH brute force detecte [**] [Classification: Attempted Administrator Privilege Gain] [Priority: 2] {TCP} 192.168.56.1:51204 -> 192.168.56.102:22`
 
 ---
 
@@ -54,7 +54,7 @@ alert tcp any any -> $HOME_NET 80 (msg:"LAB Injection SQL detectee"; content:"GE
 ```
 
 ### Exemple de log (Alerte Snort)
-`[**] [1:1000004:2] LAB Injection SQL detectee [**] [Classification: Web Application Attack] [Priority: 1] {TCP} 192.168.56.101:48112 -> 192.168.56.10:80`
+`[**] [1:1000004:2] LAB Injection SQL detectee [**] [Classification: Web Application Attack] [Priority: 1] {TCP} 192.168.56.1:48112 -> 192.168.56.102:80`
 
 ---
 
@@ -72,7 +72,7 @@ alert tcp any any -> $HOME_NET 80 (msg:"LAB Traversee de repertoire etc-passwd d
 ```
 
 ### Exemple de log (Alerte Snort)
-`[**] [1:1000005:2] LAB Traversee de repertoire etc-passwd detectee [**] [Classification: Web Application Attack] [Priority: 2] {TCP} 192.168.56.101:48115 -> 192.168.56.10:80`
+`[**] [1:1000005:2] LAB Traversee de repertoire etc-passwd detectee [**] [Classification: Web Application Attack] [Priority: 2] {TCP} 192.168.56.1:48115 -> 192.168.56.102:80`
 
 ---
 
@@ -90,4 +90,4 @@ alert tcp any any -> $HOME_NET 80 (msg:"LAB Execution de commande a distance det
 ```
 
 ### Exemple de log (Alerte Snort)
-`[**] [1:1000006:2] LAB Execution de commande a distance detectee [**] [Classification: Web Application Attack] [Priority: 1] {TCP} 192.168.56.101:49220 -> 192.168.56.10:80`
+`[**] [1:1000006:2] LAB Execution de commande a distance detectee [**] [Classification: Web Application Attack] [Priority: 1] {TCP} 192.168.56.1:49220 -> 192.168.56.102:80`
