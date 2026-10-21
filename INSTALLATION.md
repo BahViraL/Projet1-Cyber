@@ -123,7 +123,20 @@ clic sur "Create / Reset Database". Connexion par défaut : admin / password.
 Le niveau de sécurité de DVWA est réglé sur "Low" dans le menu
 "DVWA Security", pour permettre une démonstration claire des vulnérabilités.
 
-## 8. Vérifications finales
+## 8. Mise en place de l'automatisation Slack
+
+Afin de recevoir les alertes critiques en temps réel :
+
+1.  **Création du Webhook :** Une application a été créée sur un espace de travail Slack avec la fonctionnalité "Incoming Webhooks" activée pour obtenir une URL unique associée à un canal (ex: `#alertes-soc`).
+2.  **Déploiement du script :** Le script Python a été placé dans `/usr/local/bin/` et rendu exécutable :
+    ```bash
+    sudo cp point_bonus/alertes_slack.py /usr/local/bin/alerte_slack.py
+    sudo chmod +x /usr/local/bin/alerte_slack.py
+    ```
+3.  *(Le code source du script est disponible dans le dossier `point_bonus/` du dépôt).*
+
+
+## 9. Vérifications finales
 
     systemctl is-enabled snort syslog-ng elasticsearch kibana apache2 mariadb
 
