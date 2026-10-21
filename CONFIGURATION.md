@@ -59,7 +59,7 @@ Cette valeur est reprise par le service via l'option `-S` passée au démarrage 
 
 ## 4. syslog-ng — collecte et transfert vers Elasticsearch
 
-La configuration complète est dans `syslog-ng/snort.conf`[cite: 7]. Elle comprend trois blocs :
+La configuration complète est dans `syslog-ng/snort.conf`. Elle comprend trois blocs :
 
 - **source** : lit en continu le fichier d'alertes de Snort (`/var/log/snort/snort.alert.fast`).
 - **parser** : découpe chaque ligne d'alerte en champs nommés (`snort.sid`, `snort.msg`, `snort.priority`, `snort.src_ip`, `snort.dst_ip`, etc.) à l'aide d'une expression régulière avec groupes nommés.
