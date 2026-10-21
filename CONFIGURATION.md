@@ -81,3 +81,29 @@ Voir `elasticsearch/setup.md` pour le détail des requêtes. Résumé :
 
 Une vue de données a été créée avec le motif d'index `snort-*` et le champ d'horodatage `@timestamp`, permettant d'explorer les alertes dans *Discover* et de construire des visualisations dans *Lens*.
 
+
+## 7. Notifications automatisées (Slack)
+
+Pour répondre aux exigences de réactivité d'un SOC moderne, une automatisation des alertes a été mise en place via un webhook Slack.
+
+*   **Le script (`point_bonus/alerte_slack.py`) :** Ce script Python écoute l'entrée standard (stdin). Il reçoit les alertes de `syslog-ng` au format JSON, les parse, et formate un message incluant :
+    *   La priorité, le SID, et le nom de l'alerte.
+    *   Les adresses IP et ports source et destination.
+    *   Une section "Explication à l'administrateur" générée dynamiquement en fonction du SID, détaillant la menace, l'impact et les actions de remédiation recommandées.
+    *   L'envoi se fait via une requête HTTP POST vers l'API Slack.
+
+*   **L'intégration dans `syslog-ng` :** Le fichier `/etc/syslog-ng/conf.d/snort.conf` a été enrichi d'un filtre et d'une nouvelle destination :
+    ```nginx
+    # Filtre : ne notifier sur Slack que les intrusions critiques (Priorite 1)
+    filter f_snort_critique {
+        match("1" value("snort.priority"));
+    };
+
+    # Destination : envoi temps reel vers le script Python Slack
+    destination d_slack {
+        program("/usr/local/bin/alerte_slack.py"
+            template("$(format-json --key snort.* --pair @timestamp=${ISODATE})\n")
+        );
+    };
+    ```
+    Ainsi, nous avons fait le choix que seules les alertes de priorité 1 déclenchent l'exécution du script, évitant la surcharge de message de l'administrateur.
