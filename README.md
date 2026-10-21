@@ -1,8 +1,8 @@
 # Système de détection d'anomalies et de gestion de logs
 
-Projet réalisé dans le cadre du cours de cybersécurité. Chaîne complète de
-détection d'intrusion et de visualisation des alertes, construite sur une
-VM Ubuntu Server dédiée.
+Ce projet a été réalisé dans le cadre du cours de sécurité informatique. 
+L'objectif étant de construire une chaîne complète sur une machine virtuelle Ubuntu Server dédiée 
+permettant détecter des intrusions et de visualiser les alertes.
 
 ## Architecture
 ```mermaid
