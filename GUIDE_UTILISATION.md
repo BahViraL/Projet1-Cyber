@@ -111,5 +111,4 @@ Le tableau de bord personnalisé est divisé en quatre panneaux complémentaires
 
 Lorsqu'une alerte de **Priorité 1** (compromission critique : Injection SQL ou RCE) est détectée par Snort, `syslog-ng` filtre l'événement (`f_snort_critique`) et le transmet au script Python `point_bonus/alertes_slack.py`. Ce dernier envoie instantanément une notification formatée dans le canal Slack du SOC avec l'explication de la menace et les mesures de remédiation pour l'administrateur :
 
-![Alerte Slack reçue par l'administrateur](screenshots/Slack-alerte.png)
-
+![Alerte Slack reçue par l'administrateur](screenshots/alerte_slack.png)
