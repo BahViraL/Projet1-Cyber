@@ -51,3 +51,8 @@ flowchart LR
 - screenshots/ — captures justificatives
 - point_bonus/ — améliorations additionnelles
 
+##Auteurs : 
+
+-  Baptiste Bonnet
+-  Adrien Clozel
+-  Eliott Venance
