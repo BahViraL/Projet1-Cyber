@@ -35,7 +35,7 @@ Au-delà des règles spécifiques, notre infrastructure présente des limites in
 * **Mode passif (IDS) vs bloquant (IPS) :** Snort fonctionne ici en écoute réseau. Il détecte l'attaque et alerte l'administrateur en temps réel sur Slack, mais il ne bloque pas le paquet malveillant à la volée pour protéger la cible.
 * **Aveuglement face au trafic chiffré (HTTPS) :** Nos règles applicatives inspectent le contenu des requêtes en clair sur le port 80. En environnement de production, le trafic web est chiffré en HTTPS (port 443). Sans mécanisme de déchiffrement en amont, Snort ne pourrait pas inspecter la charge utile.
 
-## Améliorations et Perspectives (Veille technologique)
+## Améliorations et Perspectives
 
 Pour faire évoluer ce projet vers une architecture SOC (Security Operations Center) industrielle, plusieurs axes d'amélioration se dégagent :
 
